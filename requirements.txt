@@ -1,2 +1,7 @@
 streamlit
 openai
+json
+# langchain
+# langchain_openai
+# langchain_experimental
+# tabulate
