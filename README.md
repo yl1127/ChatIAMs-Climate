@@ -10,9 +10,8 @@ LLM+climate models
 
 You should have the following packages installed:
 
-- git
-- wget
-- docker
+- [git](https://www.git-scm.com/downloads)
+- [docker](https://www.docker.com/products/docker-desktop/)
 
 As long as you have them, do:
 
