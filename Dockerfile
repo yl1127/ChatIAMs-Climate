@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y \
 
 # RUN git clone https://github.com/streamlit/streamlit-example.git .
 
+# Copy requirements.txt into the container
+COPY requirements.txt .
+
 RUN pip3 install -r requirements.txt
 
 EXPOSE 8501
