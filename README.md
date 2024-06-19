@@ -2,4 +2,4 @@
 
 LLM+climate models
 
-![screencast]()
+![screenshoot](https://github.com/yl1127/ChatIAMs/blob/main/Web_screenshot.png)
