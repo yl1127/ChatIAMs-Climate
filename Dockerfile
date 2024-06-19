@@ -1,8 +1,8 @@
 # app/Dockerfile
 
-FROM python:3.9-slim
+FROM python:3.12-slim
 
-WORKDIR /chatiams
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
+
+# Copy all application files into the container
+COPY . .
 
 EXPOSE 8501
 
