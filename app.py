@@ -54,7 +54,7 @@ if prompt := st.chat_input():
     st.chat_message("user").write(prompt)
     # st.chat_message("assistant").write(st.session_state.messages)
     
-    response = get_chatiams(st.session_state.messages)
+    response = get_chatiams(st.session_state.messages, openai_api_key)
     # response = client.chat.completions.create(model="gpt-4o", messages=st.session_state.messages)
     # msg = get_chatiams(prompt)
     msg = response.choices[0].message.content

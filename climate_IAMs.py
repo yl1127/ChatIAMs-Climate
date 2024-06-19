@@ -11,8 +11,8 @@ def get_climate_change(variable, year, scenario):
     col = ['model','quantile', 'variable','unit', 'scenario', year]
     return df[col][(df['variable'] == variable) & (df['scenario'] == scenario)].to_json()
 
-def get_chatiams(messages):
-    openai_client = OpenAI(api_key="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")
+def get_chatiams(messages, api):
+    openai_client = OpenAI(api_key=api)
     tools = [
         {
             "type": "function",
