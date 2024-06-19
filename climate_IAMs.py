@@ -11,8 +11,8 @@ def get_climate_change(variable, year, scenario):
     col = ['model','quantile', 'variable','unit', 'scenario', year]
     return df[col][(df['variable'] == variable) & (df['scenario'] == scenario)].to_json()
 
-def get_chatiams(messages, api):
-    openai_client = OpenAI(api_key=api)
+def get_chatiams(messages, apikey):
+    openai_client = OpenAI(api_key=apikey)
     tools = [
         {
             "type": "function",
@@ -62,7 +62,7 @@ def get_chatiams(messages, api):
     # Step 2: check if the model wanted to call a function
 
     if tool_calls:
-        # messages = [{"role": "user", "content": question}]
+        second_messages = messages
         # messages = [
         # {"role": "system", "content": 'You are a helpful climate assistant. You will answer the question about temperature change and sea level change.'},
         # {"role": "user", "content": question}
@@ -72,7 +72,7 @@ def get_chatiams(messages, api):
         available_functions = {
             "get_climate_change": get_climate_change
         }  # only one function in this example, but you can have multiple
-        messages.append(response_message)  # extend conversation with assistant's reply
+        second_messages.append(response_message)  # extend conversation with assistant's reply
         # Step 4: send the info for each function call and function response to the model
         for tool_call in tool_calls:
             function_name = tool_call.function.name
@@ -86,7 +86,7 @@ def get_chatiams(messages, api):
                 # value = function_args.get("value")
             )
             
-            messages.append(
+            second_messages.append(
                 {
                     "tool_call_id": tool_call.id,
                     "role": "tool",
@@ -97,7 +97,7 @@ def get_chatiams(messages, api):
         
         second_response = openai_client.chat.completions.create(
             model="gpt-4o",
-            messages=messages,
+            messages=second_messages,
         )  # get a new response from the model where it can see the function response
     else:
         second_response = openai_client.chat.completions.create(

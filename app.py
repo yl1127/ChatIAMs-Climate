@@ -7,42 +7,46 @@ with st.sidebar:
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[View the web source code](https://github.com/yl1127/ChatIAMs/blob/main/app.py)"
     "[Open in GitHub yl1127](https://github.com/yl1127/ChatIAMs)"
+    st.caption("🌎 **Available Variables:**")
+    st.markdown("""
+    - **Surface Air Temperature Change**
+    - **Atmospheric Concentrations|CO2**
+    - **Effective Radiative Forcing**
+    - **Effective Radiative Forcing|CO2**
+    - **Effective Radiative Forcing|Aerosols**
+        - **Effective Radiative Forcing|Aerosols|Direct Effect|BC**
+        - **Effective Radiative Forcing|Aerosols|Direct Effect|OC**
+        - **Effective Radiative Forcing|Aerosols|Direct Effect|SOx**
+        - **Effective Radiative Forcing|Aerosols|Direct Effect**
+        - **Effective Radiative Forcing|Aerosols|Indirect Effect**
+    - **Sea Level Change**
+    """)
+    st.caption("🌎 **Available Scenarios:**")
+    st.markdown("""
+    - **ssp119**
+    - **ssp126**
+    - **ssp245**
+    - **ssp370**
+    - **ssp460**
+    - **ssp585**
+    """)
+
+    st.caption("🌎 **Available Year:**")
+    st.markdown("""From 2024 to 2100
+    """)
 
 st.title("💬 ChatIAMs")
 st.caption("🌎 A chatbot enhanced by Climate IAMs from IPCC")
-st.caption("🌎 **Available Variables:**")
-st.markdown("""
-- **Surface Air Temperature Change**
-- **Atmospheric Concentrations|CO2**
-- **Effective Radiative Forcing**
-  - **Effective Radiative Forcing|CO2**
-  - **Effective Radiative Forcing|Aerosols**
-    - **Effective Radiative Forcing|Aerosols|Direct Effect|BC**
-    - **Effective Radiative Forcing|Aerosols|Direct Effect|OC**
-    - **Effective Radiative Forcing|Aerosols|Direct Effect|SOx**
-    - **Effective Radiative Forcing|Aerosols|Direct Effect**
-    - **Effective Radiative Forcing|Aerosols|Indirect Effect**
-- **Sea Level Change**
-""")
-st.caption("🌎 **Available Scenarios:**")
-st.markdown("""
-- **ssp119**
-- **ssp126**
-- **ssp245**
-- **ssp370**
-- **ssp460**
-- **ssp585**
-""")
 
-st.caption("🌎 **Available Year:**")
-st.markdown("""From 2024 to 2100
-""")
+
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
+print(st.session_state.messages)
+
+# for msg in st.session_state.messages:
+#     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
     if not openai_api_key:
