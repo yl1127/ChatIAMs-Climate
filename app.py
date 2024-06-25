@@ -36,7 +36,7 @@ with st.sidebar:
     """)
 
 st.title("💬 ChatIAMs")
-st.caption("🌎 A chatbot enhanced by Climate IAMs from IPCC")
+st.caption("🌎 A chatbot enhanced by [IAMs](https://unfccc.int/topics/mitigation/workstreams/response-measures/modelling-tools-to-assess-the-impact-of-the-implementation-of-response-measures/integrated-assessment-models-iams-and-energy-environment-economy-e3-models) from [IPCC](https://www.ipcc.ch/report/ar6/wg3/downloads/report/IPCC_AR6_WGIII_Annex-III.pdf)")
 
 
 
